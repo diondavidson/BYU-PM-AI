@@ -14,7 +14,7 @@ A clean, modern, and minimalist web-based to-do list application with data persi
 
 ## Live Demo
 
-[View Live App](#) <!-- Add your Vercel URL here after deployment -->
+[View Live App](https://byu-pm-ai.vercel.app/) <!-- Add your Vercel URL here after deployment -->
 
 ## Getting Started
 
