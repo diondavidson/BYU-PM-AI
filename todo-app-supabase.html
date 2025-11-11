@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -310,11 +311,17 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>My To-Do List</h1>
@@ -353,7 +360,8 @@
                 </div>
                 <div class="form-group">
                     <label for="signupPasswordConfirm">Confirm Password</label>
-                    <input type="password" id="signupPasswordConfirm" required minlength="6" autocomplete="new-password">
+                    <input type="password" id="signupPasswordConfirm" required minlength="6"
+                        autocomplete="new-password">
                 </div>
                 <button type="submit" class="auth-submit">Sign Up</button>
             </form>
@@ -367,12 +375,7 @@
             </div>
 
             <div class="input-section">
-                <input
-                    type="text"
-                    id="taskInput"
-                    placeholder="Enter a new task..."
-                    autocomplete="off"
-                >
+                <input type="text" id="taskInput" placeholder="Enter a new task..." autocomplete="off">
                 <button id="addBtn">Add Task</button>
             </div>
 
@@ -392,10 +395,15 @@
     <!-- Supabase JS Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Supabase Config -->
-    <script src="supabase-config.js"></script>
-
     <script>
+        // ⚠️ CONFIGURATION REQUIRED ⚠️
+        // Replace these values with your actual Supabase credentials
+        // Find them at: https://app.supabase.com -> Your Project -> Settings -> API
+        const SUPABASE_CONFIG = {
+            url: 'https://axspjydaizpsvwfujpvz.supabase.co', // e.g., https://xxxxxxxxxxxxx.supabase.co
+            anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF4c3BqeWRhaXpwc3Z3ZnVqcHZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4OTEyNzUsImV4cCI6MjA3ODQ2NzI3NX0.qgBu5pN3p6qZn2KEj-DXcHF-B40JbDVBttBl538Qraw' // Your anon/public API key
+        };
+
         // Initialize Supabase client
         const { createClient } = supabase;
         const supabaseClient = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
@@ -710,4 +718,5 @@
         initApp();
     </script>
 </body>
+
 </html>

@@ -64,50 +64,69 @@ This guide will walk you through setting up Supabase as the backend for your to-
 
 ## Step 5: Configure Your App
 
-### Option A: Local Development
+### For Local Development
 
-1. Copy the config template:
-   ```bash
-   cp supabase-config.example.js supabase-config.js
-   ```
-
-2. Edit `supabase-config.js` with your credentials:
+1. Open `todo-app-supabase.html` in a text editor
+2. Find the `SUPABASE_CONFIG` section near the top of the `<script>` tag:
    ```javascript
    const SUPABASE_CONFIG = {
-     url: 'https://xxxxxxxxxxxxx.supabase.co',
-     anonKey: 'your-anon-key-here'
+       url: 'YOUR_SUPABASE_URL_HERE',
+       anonKey: 'YOUR_SUPABASE_ANON_KEY_HERE'
    };
    ```
+3. Replace `YOUR_SUPABASE_URL_HERE` with your actual Supabase URL
+4. Replace `YOUR_SUPABASE_ANON_KEY_HERE` with your actual anon key
+5. Save the file
+6. Open the file in your browser to test
 
-3. The file is already in `.gitignore`, so your credentials won't be committed
+**Example:**
+```javascript
+const SUPABASE_CONFIG = {
+    url: 'https://abcdefghijklmnop.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+};
+```
 
-### Option B: Vercel Deployment
+### For Vercel/Production Deployment
 
-For deploying to Vercel with environment variables:
+**Important:** Before pushing to GitHub/deploying:
 
-1. Go to your Vercel project dashboard
-2. Click "Settings" > "Environment Variables"
-3. Add these variables:
-   - **Name**: `VITE_SUPABASE_URL`
-     - **Value**: Your Supabase Project URL
-   - **Name**: `VITE_SUPABASE_ANON_KEY`
-     - **Value**: Your Supabase anon key
-4. Click "Save"
-5. Redeploy your app
+1. **Edit `todo-app-supabase.html` directly** with your credentials (as shown above)
+2. Add and commit the file:
+   ```bash
+   git add todo-app-supabase.html
+   git commit -m "Configure Supabase credentials for deployment"
+   git push origin main
+   ```
+3. Vercel will automatically redeploy with your credentials
 
-## Step 6: Update Your HTML File
+**Security Note:**
+- ✅ The `anon` key is **safe** to include in your HTML file - it's designed for client-side use
+- ✅ This key is protected by Row Level Security policies in your database
+- ❌ Never use the `service_role` key in client-side code
 
-The `todo-app.html` file has been updated to include:
-- Supabase client library
+### Alternative: Keep Credentials Private (Advanced)
+
+If you don't want credentials in your Git repository:
+
+1. Keep using `supabase-config.js` locally (it's already in `.gitignore`)
+2. For Vercel, use a build step or manually update the deployed file
+3. Or use Vercel's environment variables with a custom build process
+
+For most users, the inline config approach above is simpler and perfectly secure.
+
+## Step 6: What's Included
+
+The `todo-app-supabase.html` file includes:
+- Supabase client library (loaded from CDN)
 - Authentication UI (login/signup/logout)
 - User session management
-- Database operations instead of localStorage
-
-No additional setup needed - just ensure your config is correct!
+- Database operations with Supabase
+- Row Level Security integration
 
 ## Step 7: Test Your Setup
 
-1. Open `todo-app.html` in your browser (or visit your deployed URL)
+1. Open `todo-app-supabase.html` in your browser (or visit your deployed URL)
 2. You should see a login/signup form
 3. Create a new account:
    - Enter an email and password
