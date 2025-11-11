@@ -11,6 +11,9 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# Supabase configuration (keep example, ignore actual config)
+supabase-config.js
+
 # Build outputs
 dist/
 build/
