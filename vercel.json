@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "todo-app.html",
+      "src": "todo-app-supabase.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/",
-      "dest": "/todo-app.html"
+      "dest": "/todo-app-supabase.html"
     }
   ]
 }
